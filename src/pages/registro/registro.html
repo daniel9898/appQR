@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registrarse : </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Nombre de usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="usr.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input type="email" [(ngModel)]="usr.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Contraseña</ion-label>
+    <ion-input type="PassWord" [(ngModel)]="usr.clave"></ion-input>
+  </ion-item>
+  <button ion-button (click)="registrarse()" block>Registrarse</button>
+
+</ion-content>
