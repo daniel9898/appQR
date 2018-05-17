@@ -15,13 +15,12 @@ import { UtilitiesProvider } from '../providers/utilities/utilities';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { IonicStorageModule } from '@ionic/storage';
 
-
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage
-    
   ],
   imports: [
     BrowserModule,
@@ -35,15 +34,15 @@ import { IonicStorageModule } from '@ionic/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
-    
+    LoginPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UtilitiesProvider,
-    FirebaseProvider
+    FirebaseProvider,
+    QRScanner
   ]
 })
 export class AppModule {}

@@ -5,15 +5,22 @@
 </ion-header>
 <ion-content padding>
 
-  <ion-item>
-    <ion-label>Email</ion-label>
-    <ion-input type="email" [(ngModel)]="email"></ion-input>
-  </ion-item>
-   <ion-item>
-    <ion-label>Contraseña</ion-label>
-    <ion-input type="PassWord" [(ngModel)]="clave"></ion-input>
-  </ion-item>
-  <button ion-button block (click)="login()">Ingresar</button>
-  <button ion-button block color="secondary" (click)="paginaRegistro()">Registrarse</button>
+  <ng-container *ngIf="!viewInputScann">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+     <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="PassWord" [(ngModel)]="clave"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="login()">Ingresar</button>
+    <button ion-button block color="secondary" (click)="paginaRegistro()">Registrarse</button>
+  </ng-container>
+
+  <ng-container *ngIf="viewInputScann" (click)="codigoQR()" 
+                 style="background-image: url('../../assets/imgs/qr.png');">
+     
+  </ng-container>
 	
 </ion-content>

@@ -6,6 +6,7 @@ import { User } from '../../clases/usr';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Storage } from '@ionic/storage';
+//import { QrScannPage } from '../qr-scann/qr-scann';
 
 
 @IonicPage()
@@ -17,6 +18,7 @@ export class LoginPage {
    
   email : string;
   clave : string;
+  public viewInputScann : boolean = false;
 
   user : User;
   
@@ -28,7 +30,7 @@ export class LoginPage {
 
   async login(){
 
-    this.utilities.showLoading(true);
+    this.utilities.showLoading();
 
     try{
           const infoUsr = await this.ofauth.auth.signInWithEmailAndPassword(this.email,this.clave);
@@ -36,8 +38,9 @@ export class LoginPage {
           this.storage.set('usr',this.user);
 
           this.utilities.showToast('INGRESO EXITOSO !!');
-          this.navCtrl.push("HomePage"); 
-     
+          this.viewInputScann = true ;
+          this.utilities.dismissLoading();
+   
     }catch(e){
 
           this.utilities.dismissLoading();
@@ -45,6 +48,10 @@ export class LoginPage {
           console.log("ERROR : ",e);
     }
     
+  }
+
+  codigoQR() {
+    this.navCtrl.push('QrScannPage');
   }
 
   paginaRegistro(){
