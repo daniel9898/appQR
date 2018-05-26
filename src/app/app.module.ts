@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import  { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/login/login';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -16,6 +16,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { QRScanner } from '@ionic-native/qr-scanner';
+//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UtilitiesProvider,
     FirebaseProvider,
-    QRScanner
+    QRScanner,
+    //BarcodeScanner
   ]
 })
 export class AppModule {}

@@ -18,7 +18,7 @@ export class LoginPage {
    
   email : string;
   clave : string;
-  public viewInputScann : boolean = false;
+  viewInputScann : boolean = false;
 
   user : User;
   
@@ -35,6 +35,7 @@ export class LoginPage {
     try{
           const infoUsr = await this.ofauth.auth.signInWithEmailAndPassword(this.email,this.clave);
           this.user = new User(infoUsr.email,infoUsr.email,infoUsr.uid);
+        
           this.storage.set('usr',this.user);
 
           this.utilities.showToast('INGRESO EXITOSO !!');
@@ -50,8 +51,13 @@ export class LoginPage {
     
   }
 
+  get toogleHeader(){
+    return this.viewInputScann ? 'Click para Escanear' : 'Iniciar Sesión';
+  }
+
   codigoQR() {
-    this.navCtrl.push('QrScannPage');
+    //this.navCtrl.push('QrScannPage');
+    this.navCtrl.push('ListaPage');
   }
 
   paginaRegistro(){
@@ -59,6 +65,11 @@ export class LoginPage {
     this.utilities.showLoading(true);
     this.navCtrl.push('RegistroPage');
 
+  }
+
+  setLogin(em :string , cl :string){
+    this.clave = cl;
+    this.email = em;
   }
 
 }

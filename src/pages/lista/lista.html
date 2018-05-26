@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ SaldoTotal }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item *ngFor="let carga of lista">
+    <ion-thumbnail item-start>
+      <img src="../../assets/imgs/lista.jpg">
+    </ion-thumbnail>
+    <h2>{{ usrName }}</h2>
+    <p>Usted a cargado : ${{ carga.valor }}</p>
+    <button ion-button clear item-end>View</button>
+  </ion-item>
+</ion-list>
+
+</ion-content>

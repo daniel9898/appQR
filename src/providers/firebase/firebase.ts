@@ -20,21 +20,6 @@ export class FirebaseProvider {
     return this.ofauth.auth.createUserWithEmailAndPassword(user.email, user.clave);
   }
 
-  /*
-  // CUANDO QUEREMOS GENERAR UN ID AUTOMATICO
-  db.collection("cities").add({
-      name: "Tokyo",
-      country: "Japan"
-  })
-  .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-      console.error("Error adding document: ", error);
-  });
-      */
-  
-
   async operationDB(operationName : string, collectionName: string, id?: string,  data?: any){
 
     switch (operationName) {
@@ -53,9 +38,17 @@ export class FirebaseProvider {
     }
   }
 
-  async querysDB( collectionName: string, field: string, oper: any, value: string){
+  querysDB( collectionName: string, field: string, oper: any, value: string){
 
     return this.db.collection(collectionName).ref.where(field, oper, value).get();
+  }
+
+  getRef(collectionName: string){
+    return this.db.collection(collectionName).ref;
+  }
+
+  InsertarConIdAutomatico(collectionName: string,  data : any){
+    return this.db.collection(collectionName).add(data);
   }
 
 

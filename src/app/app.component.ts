@@ -24,7 +24,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      timer(7000).subscribe(() =>{
+      timer(1000).subscribe(() =>{
          this.showSplash = false;
       })
 

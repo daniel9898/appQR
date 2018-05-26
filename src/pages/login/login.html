@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Login :</ion-title>
+    <ion-title>{{ toogleHeader }}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
 
   <ng-container *ngIf="!viewInputScann">
     <ion-item>
-      <ion-label>Email</ion-label>
+      <ion-label>Correo Electronico</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
      <ion-item>
@@ -18,9 +18,26 @@
     <button ion-button block color="secondary" (click)="paginaRegistro()">Registrarse</button>
   </ng-container>
 
-  <ng-container *ngIf="viewInputScann" (click)="codigoQR()" 
-                 style="background-image: url('../../assets/imgs/qr.png');">
-     
-  </ng-container>
-	
+  <div padding *ngIf="!viewInputScann">
+    <button ion-button block (click)="setLogin('admin@gmail.com','000011')">ADMIN</button>
+    <button ion-button block color="secondary" (click)="setLogin('invitado@gmail.com','000022')">INVITADO
+    </button>
+    <button ion-button block color="light" (click)="setLogin('usuario@gmail.com','000033')">USUARIO</button>
+    <button ion-button block color="dark" (click)="setLogin('anonimo@gmail.com','000044')">ANONIMO</button>
+    <button ion-button block color="danger" (click)="setLogin('tester@gmail.com','000055')">TESTER</button>
+  </div>
+
+
+  <ion-card *ngIf="viewInputScann" (click)="codigoQR()">
+    <img src="../../assets/imgs/qr.gif"/>
+    <ion-card-content>
+      <ion-card-title>
+        Titulo De Muestra
+        </ion-card-title>
+      <p>
+        Texto sin sentido , mas que para hacer un poco de bulto
+      </p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

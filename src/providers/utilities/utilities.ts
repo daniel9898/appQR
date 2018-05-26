@@ -12,24 +12,31 @@ export class UtilitiesProvider {
               private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {}
 
-  showAlert(title:string, msj : string) {
+  showAlert(title: string, msj: string, handler?: any) {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: msj,
-      buttons: ['Cancelar']
+      buttons: [
+      {
+        text: 'Continuar',
+        role: 'cancel',
+        handler: (handler != null) ?  handler : () => console.log("click alert")
+      }
+    ]
     });
     alert.present();
   }
 
   showToast(msg : string, dismissFunction?: any) {
-
+     
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
       position: 'top',
-      cssClass: './toast.scss'
+      cssClass: './success.scss'
     });
     toast.onDidDismiss((dismissFunction) ? dismissFunction() : "" );
+    
     toast.present();
   }
 
