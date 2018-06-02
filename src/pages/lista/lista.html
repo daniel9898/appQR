@@ -8,16 +8,16 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="white" padding>
+ 
 <ion-list>
   <ion-item *ngFor="let carga of lista">
     <ion-thumbnail item-start>
-      <img src="../../assets/imgs/lista.jpg">
+      <img src="assets/imgs/lista.jpg">
     </ion-thumbnail>
     <h2>{{ usrName }}</h2>
     <p>Usted a cargado : ${{ carga.valor }}</p>
-    <button ion-button clear item-end>View</button>
+    <button ion-button clear item-end>Ver</button>
   </ion-item>
 </ion-list>
 

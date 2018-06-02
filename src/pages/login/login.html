@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ toogleHeader }}</ion-title>
+    <ion-title>{{ toogleHeader }} <ion-icon name="barcode"></ion-icon></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -26,10 +26,13 @@
     <button ion-button block color="dark" (click)="setLogin('anonimo@gmail.com','000044')">ANONIMO</button>
     <button ion-button block color="danger" (click)="setLogin('tester@gmail.com','000055')">TESTER</button>
   </div>
-
+  
+  <ion-item  *ngIf="viewInputScann">
+      <button ion-button clear item-end (click)="goToPage('ListaPage')"><h3>VER RECARGAS</h3></button>
+  </ion-item>
 
   <ion-card *ngIf="viewInputScann" (click)="codigoQR()">
-    <img src="../../assets/imgs/qr.gif"/>
+    <img src="assets/imgs/qr.gif"/>
     <ion-card-content>
       <ion-card-title>
         Titulo De Muestra

@@ -37,6 +37,7 @@ export class QrScannPage {
 
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
       console.log("Result:",status);
+      //this.utils.showLoading(true);
       
       if (status.authorized) {
         // camera permission was granted
@@ -55,7 +56,7 @@ export class QrScannPage {
         });
 
         // show camera preview
-        this.qrScanner.show();
+        //this.qrScanner.show();
 
       } else if (status.denied) {
       	console.log('status.denied');
@@ -113,16 +114,17 @@ export class QrScannPage {
            let result = await this.firebase.InsertarConIdAutomatico('cargas',carga);
            if(result.id != null){
               this.utils.showToast("USTED A CARGADO SALGO CON EXITO");
-              this.qrScanner.hide(); // hide camera preview
-              this.scanSub.unsubscribe(); // stop scanning
+              //this.qrScanner.hide(); // hide camera preview
+              //this.scanSub.unsubscribe(); // stop scanning
+              this.utils.showLoading(true);
               this.goToPage('ListaPage');
 
            }
         }else{
           console.log("el codigo ya estaba cargado");
           this.utils.showAlert("Atención ! ","El codigo a sido cargado con anterioridad");
-          this.qrScanner.hide(); // hide camera preview
-          this.scanSub.unsubscribe(); // stop scanning
+          //this.qrScanner.hide(); // hide camera preview
+          this.utils.showLoading(true);
           this.goToPage('ListaPage');
         }
 
@@ -133,7 +135,10 @@ export class QrScannPage {
   }
 
   goToPage(page : string){
+    this.utils.showLoading(true);
     this.navCtrl.push(page);
   }
+
+ 
 
 }

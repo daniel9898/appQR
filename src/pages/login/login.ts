@@ -51,13 +51,16 @@ export class LoginPage {
     
   }
 
+  goToPage(page : string){
+    this.navCtrl.push(page);
+  }
+
   get toogleHeader(){
-    return this.viewInputScann ? 'Click para Escanear' : 'Iniciar Sesión';
+    return this.viewInputScann ? 'Escanear  ' : 'Iniciar Sesión  ';
   }
 
   codigoQR() {
-    //this.navCtrl.push('QrScannPage');
-    this.navCtrl.push('ListaPage');
+    this.navCtrl.push('QrScannPage');
   }
 
   paginaRegistro(){
